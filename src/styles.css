@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Tailwindcss */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body, app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+app-site-header {
+  min-height: 3rem;
+  display: flex;
+}
+
+
+
+app-site-navigation {
+  min-height: 5rem;
+  display: flex;
+  background-color: dodgerblue;
+}
+
+app-site-footer {
+  margin-top: auto;
+  min-height: 3rem;
+}

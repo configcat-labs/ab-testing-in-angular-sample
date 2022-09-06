@@ -1,0 +1,39 @@
+.hero {
+  background-color: aqua;
+  min-height: 16rem;
+  padding: 2rem;
+  display: flex;
+}
+
+.hero > div {
+  margin: auto;
+}
+
+.pricing {
+  background-color: lightgray;
+  padding: 2rem;
+}
+
+.pricing-plans {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-evenly;
+}
+
+.pricing-plans .col {
+  min-width: 20rem;
+  min-height: 40rem;
+}
+
+.pricing-plans .col-1 {
+  background-color: yellow;
+}
+
+.pricing-plans .col-2 {
+  background-color: dodgerblue;
+}
+
+.pricing-plans .col-3 {
+  background-color: lightcoral;
+}

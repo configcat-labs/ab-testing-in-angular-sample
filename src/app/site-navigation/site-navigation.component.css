@@ -1,0 +1,9 @@
+nav {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
