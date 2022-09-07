@@ -16,9 +16,12 @@
 
 .pricing-plans {
   display: flex;
+}
+
+.pricing-plans .internal-wrapper {
+  margin: auto;
+  display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-evenly;
 }
 
 .pricing-plans .col {
@@ -28,12 +31,21 @@
 
 .pricing-plans .col-1 {
   background-color: yellow;
+  @apply mt-12;
 }
 
 .pricing-plans .col-2 {
   background-color: dodgerblue;
+  @apply shadow-lg;
 }
 
 .pricing-plans .col-3 {
   background-color: lightcoral;
+  @apply mt-12
+}
+
+/* Small elements */
+
+li {
+  @apply my-4;
 }
