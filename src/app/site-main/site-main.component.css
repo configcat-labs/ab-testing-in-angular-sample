@@ -1,8 +1,8 @@
 .hero {
-  background-color: aqua;
   min-height: 16rem;
   padding: 2rem;
   display: flex;
+  @apply bg-gray-900;
 }
 
 .hero > div {
@@ -10,7 +10,6 @@
 }
 
 .pricing {
-  background-color: lightgray;
   padding: 2rem;
 }
 
@@ -26,21 +25,21 @@
 
 .pricing-plans .col {
   min-width: 20rem;
-  min-height: 40rem;
+  height: 28rem;
+  max-height: 28rem;
+  @apply bg-white shadow border-gray-50;
 }
 
 .pricing-plans .col-1 {
-  background-color: yellow;
-  @apply mt-12;
+  @apply mt-12 bg-white shadow;
 }
 
 .pricing-plans .col-2 {
-  background-color: dodgerblue;
-  @apply shadow-lg;
+  min-height: 34rem;
+  @apply shadow-lg z-10;
 }
 
 .pricing-plans .col-3 {
-  background-color: lightcoral;
   @apply mt-12
 }
 
