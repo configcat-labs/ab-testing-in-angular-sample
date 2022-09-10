@@ -45,6 +45,18 @@
 
 /* Small elements */
 
+.pricing-badge {
+  @apply border-gray-800 border-x-4 p-4;
+}
+
+.yellow-pricing-badge {
+  @apply bg-yellow-400;
+}
+
+.green-pricing-badge {
+  @apply bg-green-400;
+}
+
 li {
   @apply my-4;
 }
