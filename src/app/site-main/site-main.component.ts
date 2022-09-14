@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as configcat from 'configcat-js';
-// Amplitude
+
 import { ampli } from '../../ampli'
 
 
