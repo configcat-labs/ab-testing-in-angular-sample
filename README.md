@@ -8,7 +8,8 @@ This is a fictional hosting website. It is used to demonstrate how to perform an
 
 Here is a screenshot:
 
-<!-- TODO: Update snapshot -->
+![Screenshot of the sample app - variation state](https://user-images.githubusercontent.com/74829200/190157524-f6bdaccb-dfef-4cbf-819b-7d4cf68305bd.png)
+
 
 The green badge over the pro pricing plan can be identified as the new variation/feature to be tested.
 
