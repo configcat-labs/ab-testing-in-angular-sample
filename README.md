@@ -15,7 +15,7 @@ The green badge over the pro pricing plan can be identified as the new variation
 ## How it works
 
 Clicking on the buy now button on the pro plan card logs an event to Amplitude. The events are then recorded in 
-an analysis chart for later comparison to the previous benchmark metrics collected for the control state (a version of the site a yellow badge) of the site.
+an analysis chart for later comparison to the previous benchmark metrics collected for the control state (a version of the site a yellow badge).
 
 ## Build and Run
 
