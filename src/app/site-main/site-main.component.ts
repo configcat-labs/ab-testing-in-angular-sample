@@ -1,35 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import * as configcat from 'configcat-js';
-
-import { ampli } from '../../ampli'
-
+import { Component } from '@angular/core';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-site-main',
+  imports: [
+    NgClass
+  ],
   templateUrl: './site-main.component.html',
-  styleUrls: ['./site-main.component.css']
+  styleUrl: './site-main.component.scss'
 })
-export class SiteMainComponent implements OnInit {
-  canShowGreenPricingBadge:boolean = false;
+export class SiteMainComponent {
+  isGreenPricingBadgeEnabled: boolean = false;
 
   handleProPlanClick() {
-    ampli.proPlanClick();
+    console.log('Pro plan clicked');
   }
-
-  constructor() {
-    let configCatClient = configcat.createClient("eJPaCHq8NEKIV0SCfou-qQ/lg7L5k7AeEu1A9P0EvB6xA");
-    configCatClient.getValueAsync("canshowgreenpricingbadge", false)
-    .then(value => {
-      this.canShowGreenPricingBadge = value;
-    })
-
-    ampli.load({environment: 'production'})
-
-
-   }
-
-  ngOnInit(): void {
-  }
-
-
 }

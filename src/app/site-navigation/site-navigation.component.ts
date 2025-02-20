@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-site-navigation',
+  imports: [],
   templateUrl: './site-navigation.component.html',
-  styleUrls: ['./site-navigation.component.css']
+  styleUrl: './site-navigation.component.scss'
 })
-export class SiteNavigationComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class SiteNavigationComponent {
 
 }

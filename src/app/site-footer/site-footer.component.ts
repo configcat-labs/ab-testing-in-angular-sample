@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-site-footer',
+  imports: [],
   templateUrl: './site-footer.component.html',
-  styleUrls: ['./site-footer.component.css']
+  styleUrl: './site-footer.component.scss'
 })
-export class SiteFooterComponent implements OnInit {
+export class SiteFooterComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  protected readonly Date = new Date();
 }

@@ -1,58 +1,59 @@
-# A/B testing in Angular sample
+# AbTestingInAngularSample
 
-A companion repo for **How to A/B test your Angular application using Feature Flags and Amplitude.**
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
 
-## About
+## Development server
 
-This is a fictional hosting website. It is used to demonstrate how to perform an A/B test in Angular.
+To start a local development server, run:
 
-Here is a screenshot:
-
-![Screenshot of the sample app - variation state](https://user-images.githubusercontent.com/74829200/190157524-f6bdaccb-dfef-4cbf-819b-7d4cf68305bd.png)
-
-
-The green badge over the pro pricing plan can be identified as the new variation/feature to be tested.
-
-## How it works
-
-Clicking on the buy now button on the pro plan card logs an event to Amplitude. The events are then recorded in 
-an analysis chart for later comparison to the previous benchmark metrics collected for the control state (a version of the site a yellow badge).
-
-## Build and Run
-
-### Prerequisites
-
-- Node - Version 16.16.0
-
-### Running the app
-
-1. Clone this repository
-
-2. Open a terminal in the root of the cloned repo and install the required npm packages:
-
-```sh
-npm install
-```
-3. Start the app by running:
-
-```sh
-npm start
+```bash
+ng serve
 ```
 
-## Learn more
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-Useful links to technical resources.
+## Code scaffolding
 
-- [Angular Documentation](https://angular.io/docs) - learn about Angular features and API.
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-[**ConfigCat**](https://configcat.com) also supports many other frameworks and languages. Check out the full list of supported SDKs [here](https://configcat.com/docs/sdk-reference/overview/)
+```bash
+ng generate component component-name
+```
 
-You can also explore other code samples for various languages, frameworks, and topics here in the [ConfigCat labs](https://github.com/configcat-labs) on GitHub.
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-Keep up with ConfigCat on [Twitter](https://twitter.com/configcat), [Facebook](https://www.facebook.com/configcat), [LinkedIn](https://www.linkedin.com/company/configcat/), and [GitHub](https://github.com/configcat).
+```bash
+ng generate --help
+```
 
-## Author
-[Chavez Harris](https://github.com/codedbychavez)
+## Building
 
-## Contributions
-Contributions are welcome!
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
