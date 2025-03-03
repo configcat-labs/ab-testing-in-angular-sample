@@ -1,59 +1,52 @@
-# AbTestingInAngularSample
+Read.me template:
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
+# A/B Testing an Angular App with ConfigCat
 
-## Development server
+**[Read the blog post here](https://configcat.com/blog/2022/11/04/how-to-implement-ab-testing-angular/)**
 
-To start a local development server, run:
+This sample app accompanies the blog post above and demonstrates how to A/B test an angular application using [ConfigCat feature flags](https://configcat.com/featureflags) and [Amplitude](https://amplitude.com/). The goal of the experiment is determine whether changing the color of the Pro plan badge color from yellow to green will generate more clicks.
 
-```bash
-ng serve
+![Screenshot of the sample app - variation state](https://user-images.githubusercontent.com/74829200/190157524-f6bdaccb-dfef-4cbf-819b-7d4cf68305bd.png)
+
+## Build & Run
+
+### Prerequisites
+
+- A [ConfigCat account](https://app.configcat.com/signup)
+- Knowledge of Angular
+- [Node 20+](https://nodejs.org/en/download) installed on your computer.
+
+### Running the App
+
+1. Clone this repository.
+
+```sh
+git clone git@github.com:configcat-labs/ab-testing-in-angular-sample.git
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+2. To run a local development server and launch the app in your browser, navigate to the project folder and run the running command:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```sh
+npm run start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Learn more
 
-```bash
-ng generate --help
-```
+Useful links to technical resources.
 
-## Building
+- [Angular Documentation](https://angular.dev/) - learn about Angular features.
+- [Angular Tutorial](https://angular.dev/tutorials/learn-angular) - Learn Angular in your browser.
 
-To build the project run:
+[**ConfigCat**](https://configcat.com) supports many other frameworks and languages. Check out the full list of supported SDKs [here](https://configcat.com/docs/sdk-reference/overview/).
 
-```bash
-ng build
-```
+You can also explore other code samples for various languages, frameworks, and topics in [ConfigCat labs](https://github.com/configcat-labs) on GitHub.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Keep up with ConfigCat on [X](https://x.com/configcat), [Facebook](https://www.facebook.com/configcat), [LinkedIn](https://www.linkedin.com/company/configcat/), and [GitHub](https://github.com/configcat).
 
-## Running unit tests
+## Author
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+[Chavez Harris](https://github.com/codedbychavez)
 
-```bash
-ng test
-```
+## Contributions
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Contributions are welcome!

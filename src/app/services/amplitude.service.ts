@@ -1,23 +1,20 @@
 import {Injectable} from '@angular/core';
 import * as amplitude from '@amplitude/analytics-browser';
-import type {ValidPropertyType} from '@amplitude/analytics-types';
+import type {ValidPropertyType, BrowserOptions} from '@amplitude/analytics-types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AmplitudeService {
-  constructor() {
-  }
 
   /**
    * Initialize Amplitude with your API key
    * @param apiKey - Your Amplitude API Key
+   * @param options - Amplitude browser options
    */
 
-  init(apiKey: string): void {
-    amplitude.init(apiKey, {
-      //   Optional configuration options
-    })
+  initialize(apiKey: string, options?: BrowserOptions): void {
+    amplitude.init(apiKey, options)
   }
 
   /**
@@ -25,7 +22,7 @@ export class AmplitudeService {
    * @param eventName - Name of the event
    * @param eventProperties - Optional properties for the event
    */
-  logEvent(eventName: string, eventProperties?: Record<string, any>): void {
+  trackEvent(eventName: string, eventProperties?: Record<string, any>): void {
     amplitude.track(eventName, eventProperties);
   }
 
@@ -35,15 +32,6 @@ export class AmplitudeService {
    */
   setUserId(userId: string): void {
     amplitude.setUserId(userId);
-  }
-
-  /**
-   * Set user property
-   * @param property - User property to set
-   * @param value
-   */
-  setUserProperties(property: string, value: ValidPropertyType): void {
-    amplitude.identify(new amplitude.Identify().set(property, value))
   }
 
   /**

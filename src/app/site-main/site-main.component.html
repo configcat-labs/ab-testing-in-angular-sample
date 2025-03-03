@@ -132,7 +132,10 @@
             </li>
           </ul>
           <div class="mt-16">
-            <button (click)="handleProPlanClick()" class="buy-button min-w-full">Buy Now</button>
+            <button (click)="handleProPlanClick(
+              isGreenPricingBadgeEnabled ? 'greenBadge' : 'yellowBadge'
+              )" class="buy-button min-w-full">Buy Now
+            </button>
           </div>
         </div>
       </div>

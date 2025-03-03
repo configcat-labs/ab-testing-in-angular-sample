@@ -19,7 +19,7 @@ export class ConfigCatService {
   private readonly clientSubject = new BehaviorSubject<IConfigCatClient | null>(null);
   private client$ = this.clientSubject.asObservable();
 
-  async connect(connectParameters: IConnectParameters): Promise<boolean> {
+  async initialize(connectParameters: IConnectParameters): Promise<boolean> {
     if (this.clientSubject.value) {
       return false; // Already connected
     }
