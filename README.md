@@ -1,58 +1,52 @@
-# A/B testing in Angular sample
+Read.me template:
 
-A companion repo for **How to A/B test your Angular application using Feature Flags and Amplitude.**
+# A/B Testing an Angular App with ConfigCat
 
-## About
+**[Read the blog post here](https://configcat.com/blog/2022/11/04/how-to-implement-ab-testing-angular/)**
 
-This is a fictional hosting website. It is used to demonstrate how to perform an A/B test in Angular.
-
-Here is a screenshot:
+This sample app accompanies the blog post above and demonstrates how to A/B test an angular application using [ConfigCat feature flags](https://configcat.com/featureflags) and [Amplitude](https://amplitude.com/). The goal of the experiment is determine whether changing the color of the Pro plan badge color from yellow to green will generate more clicks.
 
 ![Screenshot of the sample app - variation state](https://user-images.githubusercontent.com/74829200/190157524-f6bdaccb-dfef-4cbf-819b-7d4cf68305bd.png)
 
-
-The green badge over the pro pricing plan can be identified as the new variation/feature to be tested.
-
-## How it works
-
-Clicking on the buy now button on the pro plan card logs an event to Amplitude. The events are then recorded in 
-an analysis chart for later comparison to the previous benchmark metrics collected for the control state (a version of the site a yellow badge).
-
-## Build and Run
+## Build & Run
 
 ### Prerequisites
 
-- Node - Version 16.16.0
+- A [ConfigCat account](https://app.configcat.com/signup)
+- Knowledge of Angular
+- [Node 20+](https://nodejs.org/en/download) installed on your computer.
 
-### Running the app
+### Running the App
 
-1. Clone this repository
-
-2. Open a terminal in the root of the cloned repo and install the required npm packages:
+1. Clone this repository.
 
 ```sh
-npm install
+git clone git@github.com:configcat-labs/ab-testing-in-angular-sample.git
 ```
-3. Start the app by running:
+
+2. To run a local development server and launch the app in your browser, navigate to the project folder and run the running command:
 
 ```sh
-npm start
+npm run start
 ```
 
 ## Learn more
 
 Useful links to technical resources.
 
-- [Angular Documentation](https://angular.io/docs) - learn about Angular features and API.
+- [Angular Documentation](https://angular.dev/) - learn about Angular features.
+- [Angular Tutorial](https://angular.dev/tutorials/learn-angular) - Learn Angular in your browser.
 
-[**ConfigCat**](https://configcat.com) also supports many other frameworks and languages. Check out the full list of supported SDKs [here](https://configcat.com/docs/sdk-reference/overview/)
+[**ConfigCat**](https://configcat.com) supports many other frameworks and languages. Check out the full list of supported SDKs [here](https://configcat.com/docs/sdk-reference/overview/).
 
-You can also explore other code samples for various languages, frameworks, and topics here in the [ConfigCat labs](https://github.com/configcat-labs) on GitHub.
+You can also explore other code samples for various languages, frameworks, and topics in [ConfigCat labs](https://github.com/configcat-labs) on GitHub.
 
-Keep up with ConfigCat on [Twitter](https://twitter.com/configcat), [Facebook](https://www.facebook.com/configcat), [LinkedIn](https://www.linkedin.com/company/configcat/), and [GitHub](https://github.com/configcat).
+Keep up with ConfigCat on [X](https://x.com/configcat), [Facebook](https://www.facebook.com/configcat), [LinkedIn](https://www.linkedin.com/company/configcat/), and [GitHub](https://github.com/configcat).
 
 ## Author
+
 [Chavez Harris](https://github.com/codedbychavez)
 
 ## Contributions
+
 Contributions are welcome!
