@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="col col-2">
-        <div [ngClass]="[isGreenPricingBadgeEnabled ? 'green-pricing-badge' : 'yellow-pricing-badge']"
+        <div [ngClass]="[isGreenPricingBadgeEnabled() ? 'green-pricing-badge' : 'yellow-pricing-badge']"
              class="pricing-badge">
           <div class="text-center font-bold">Best Value <span class="font-light">(Save <span
             class="font-semibold">30%</span>)</span></div>
@@ -133,7 +133,7 @@
           </ul>
           <div class="mt-16">
             <button (click)="handleProPlanClick(
-              isGreenPricingBadgeEnabled ? 'greenBadge' : 'yellowBadge'
+              isGreenPricingBadgeEnabled() ? 'greenBadge' : 'yellowBadge'
               )" class="buy-button min-w-full">Buy Now
             </button>
           </div>

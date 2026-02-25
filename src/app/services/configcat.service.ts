@@ -1,48 +1,107 @@
-import {Injectable} from '@angular/core';
-import {getClient, IAutoPollOptions, IConfigCatClient, PollingMode} from 'configcat-js';
-import {BehaviorSubject} from 'rxjs';
+import { isDevMode, Injectable, type OnDestroy, signal, computed } from '@angular/core';
+import type { IConfigCatClient, SettingTypeOf, SettingValue, User } from '@configcat/sdk/browser';
+import {
+  createConsoleLogger,
+  LogLevel,
+  getClient,
+  PollingMode,
+  IConfigCatClientSnapshot,
+} from '@configcat/sdk/browser';
 
-interface IConnectParameters {
-  sdkKey: string,
-  pollingMode?: PollingMode,
-  options?: IAutoPollOptions,
-}
+@Injectable({ providedIn: 'root' })
+export class ConfigCatService implements OnDestroy {
+  private readonly client?: IConfigCatClient;
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ConfigCatService {
+  public readonly connectionState = signal<'loading' | 'ready' | 'error' | 'disabled'>('loading');
+  private readonly snapshotSignal = signal<IConfigCatClientSnapshot | null>(null);
+
+  readonly snapshot = this.snapshotSignal.asReadonly();
+
+  private defaultUser?: User;
+
+  // For demo purposes - in production, move this to your environment file
+  private readonly SDK_KEY = 'configcat-sdk-1/IOjdCIhn9UyK5ZAfJsGYSw/XhutSyAWn0COXq3uYE4dqA'; // YOUR-CONFIGCAT-SDK-KEY
+  private readonly POLL_INTERVAL_SECONDS = 30;
 
   constructor() {
-  }
-
-  private readonly clientSubject = new BehaviorSubject<IConfigCatClient | null>(null);
-  private client$ = this.clientSubject.asObservable();
-
-  async initialize(connectParameters: IConnectParameters): Promise<boolean> {
-    if (this.clientSubject.value) {
-      return false; // Already connected
+    // Check SDK key
+    if (!this.SDK_KEY) {
+      console.error('ConfigCat SDK key is not configured');
+      this.connectionState.set('disabled');
+      return;
     }
 
-    const client = getClient(connectParameters.sdkKey, connectParameters.pollingMode, connectParameters.options);
-    await client.waitForReady(); // Ensures client is ready
+    const logger = createConsoleLogger(isDevMode() ? LogLevel.Info : LogLevel.Warn);
+    const self = this;
 
-    this.clientSubject.next(client);
-    return true;
-  }
+    try {
+      this.client = getClient(this.SDK_KEY, PollingMode.AutoPoll, {
+        pollIntervalSeconds: this.POLL_INTERVAL_SECONDS,
+        logger,
+        setupHooks: (hooks) => {
+          hooks.on('configChanged', function () {
+            // Update signal when config changes
+            self.snapshotSignal.set(this.configCatClient.snapshot());
+          });
 
-  async getFeatureFlag(featureFlagKey: string, defaultValue = false): Promise<boolean> {
-    const client = this.clientSubject.value;
-    if (!client) throw new Error("ConfigCat client is not connected.");
+          hooks.on('clientReady', () => {
+            self.connectionState.set('ready');
+          });
 
-    return client.getValueAsync(featureFlagKey, defaultValue);
-  }
-
-  disconnect(): void {
-    const client = this.clientSubject.value;
-    if (client) {
-      client.dispose();
-      this.clientSubject.next(null);
+          hooks.on('clientError', (error) => {
+            console.error('ConfigCat client error:', error);
+            self.connectionState.set('error');
+          });
+        },
+      });
+      this.client
+        .waitForReady()
+        .then(() => {
+          if (this.client) {
+            this.snapshotSignal.set(this.client.snapshot());
+          }
+        })
+        .catch((error) => {
+          console.error('ConfigCat failed to initialize:', error);
+          this.connectionState.set('error');
+        });
+    } catch (error) {
+      console.error('ConfigCat initialization failed:', error);
+      this.connectionState.set('disabled');
     }
+  }
+
+  ngOnDestroy(): void {
+    this.client?.dispose();
+  }
+
+  setDefaultUser(user: User) {
+    if (!this.client) {
+      console.warn('Cannot set default user: ConfigCat client not available');
+      return;
+    }
+    this.client.setDefaultUser((this.defaultUser = user));
+  }
+
+  clearDefaultUser() {
+    if (!this.client) {
+      console.warn('Cannot clear default user: ConfigCat client not available');
+      return;
+    }
+    this.client.clearDefaultUser();
+    this.defaultUser = undefined;
+  }
+
+  isReady() {
+    return computed(() => this.connectionState() === 'ready');
+  }
+
+  getValue<T extends SettingValue>(key: string, defaultValue: T, user?: User) {
+    return computed(() => {
+      const snapshot = this.snapshotSignal();
+      return snapshot
+        ? snapshot.getValue(key, defaultValue, user ?? this.defaultUser)
+        : (defaultValue as SettingTypeOf<T>);
+    });
   }
 }

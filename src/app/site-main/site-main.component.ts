@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {NgClass} from '@angular/common';
 import {ConfigCatService} from '../services/configcat.service';
 import {AmplitudeService} from '../services/amplitude.service';
@@ -14,20 +14,15 @@ import {environment} from '../../environments/environment';
   styleUrl: './site-main.component.scss'
 })
 export class SiteMainComponent implements OnInit {
-  isGreenPricingBadgeEnabled: boolean = false;
+  private configCatService = inject(ConfigCatService);
+  readonly connectionState = this.configCatService.connectionState();
+  isGreenPricingBadgeEnabled = this.configCatService.getValue('greenPricingBadge', false)
 
   constructor(
-    private amplitudeService: AmplitudeService,
-    private configCatService: ConfigCatService) {
-
-  }
+    private amplitudeService: AmplitudeService){}
 
   async ngOnInit() {
     this.amplitudeService.initialize(environment.amplitudeApiKey);
-    await this.configCatService.initialize({
-      sdkKey: environment.configCatSDKKey,
-    });
-    this.isGreenPricingBadgeEnabled = await this.configCatService.getFeatureFlag('greenPricingBadge');
   }
 
 
