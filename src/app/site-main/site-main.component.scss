@@ -30,20 +30,16 @@
   @apply bg-white shadow border-gray-50;
 }
 
-.pricing-plans .col-1 {
-  @apply mt-12 bg-white shadow;
-}
-
 .pricing-plans .col-2 {
   min-height: 34rem;
   @apply shadow-lg z-10;
 }
 
 .pricing-plans .col-3 {
-  @apply mt-12
+  @apply mt-12;
 }
 
-/* Small elements */
+// Small elements
 
 .pricing-badge {
   @apply border-gray-800 border-x-4 p-4;
@@ -60,3 +56,9 @@
 li {
   @apply my-4;
 }
+
+
+.buy-button {
+  @apply inline-flex items-center justify-center whitespace-nowrap border-2 bg-transparent border-gray-600 px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-800 hover:text-gray-50
+}
+

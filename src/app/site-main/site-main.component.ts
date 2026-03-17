@@ -1,35 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import * as configcat from 'configcat-js';
-
-import { ampli } from '../../ampli'
-
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { ConfigCatService } from '../services/configcat.service';
+import { AmplitudeService } from '../services/amplitude.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-site-main',
+  imports: [NgClass],
   templateUrl: './site-main.component.html',
-  styleUrls: ['./site-main.component.css']
+  standalone: true,
+  styleUrl: './site-main.component.scss',
 })
 export class SiteMainComponent implements OnInit {
-  canShowGreenPricingBadge:boolean = false;
+  private configCatService = inject(ConfigCatService);
+  readonly connectionState = this.configCatService.connectionState();
+  isGreenPricingBadgeEnabled = this.configCatService.getValue(
+    'greenPricingBadge',
+    false,
+  );
 
-  handleProPlanClick() {
-    ampli.proPlanClick();
+  constructor(private amplitudeService: AmplitudeService) {}
+
+  async ngOnInit() {
+    this.amplitudeService.initialize(environment.amplitudeApiKey);
   }
 
-  constructor() {
-    let configCatClient = configcat.createClient("eJPaCHq8NEKIV0SCfou-qQ/lg7L5k7AeEu1A9P0EvB6xA");
-    configCatClient.getValueAsync("canshowgreenpricingbadge", false)
-    .then(value => {
-      this.canShowGreenPricingBadge = value;
-    })
-
-    ampli.load({environment: 'production'})
-
-
-   }
-
-  ngOnInit(): void {
+  handleProPlanClick(badgeColor: string) {
+    this.amplitudeService.trackEvent('ProPlanClick', {
+      badgeColor: badgeColor,
+    });
+    window.alert(`Pro plan: ${badgeColor}`);
   }
-
-
 }
